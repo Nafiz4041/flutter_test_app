@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test_app/controllers/valuController.dart';
-import 'package:flutter_test_app/pages/quiz/quiz3.dart';
-import 'package:flutter_test_app/pages/quiz/quiz_page1.dart';
+import 'package:flutter_test_app/pages/quiz/result_page.dart';
 import 'package:get/get.dart';
 
-class Quiz2Page extends StatefulWidget {
-  Quiz2Page({super.key});
+class Quiz3Page extends StatefulWidget {
+  const Quiz3Page({super.key});
 
   @override
-  State<Quiz2Page> createState() => _Quiz2PageState();
+  State<Quiz3Page> createState() => _Quiz3PageState();
 }
 
 enum radioOption {
@@ -18,15 +17,14 @@ enum radioOption {
   c,
 }
 
-class _Quiz2PageState extends State<Quiz2Page> {
+class _Quiz3PageState extends State<Quiz3Page> {
   ValuController vc = Get.find();
   radioOption selectedValue = radioOption.none;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Page 2"),
+        title: const Text("Page 3"),
       ),
       body: Center(
         child: Column(
@@ -66,29 +64,15 @@ class _Quiz2PageState extends State<Quiz2Page> {
               },
               title: const Text("6"),
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                TextButton(
-                  onPressed: () {
-                    if (selectedValue == radioOption.c) {
-                      vc.marks += 10;
-                    }
-                    Get.off(QuizPage());
-                  },
-                  child: const Text("Prev!"),
-                ),
-                TextButton(
-                  onPressed: () {
-                    if (selectedValue == radioOption.c) {
-                      vc.marks += 10;
-                    }
-                    Get.off(Quiz3Page());
-                  },
-                  child: const Text("Submit!"),
-                ),
-              ],
-            )
+            TextButton(
+              onPressed: () {
+                if (selectedValue == radioOption.c) {
+                  vc.marks += 10;
+                }
+                Get.off(ResultPage());
+              },
+              child: const Text("Submit!"),
+            ),
           ],
         ),
       ),

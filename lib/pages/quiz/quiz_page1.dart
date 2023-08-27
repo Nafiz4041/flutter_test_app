@@ -10,51 +10,74 @@ enum radioOption {
   c,
 }
 
-class QuizPage extends StatelessWidget {
-  ValuController vc = Get.put(ValuController());
+class QuizPage extends StatefulWidget {
   QuizPage({super.key});
+
+  @override
+  State<QuizPage> createState() => _QuizPageState();
+}
+
+class _QuizPageState extends State<QuizPage> {
+  ValuController vc = Get.put(ValuController());
+
   radioOption selectedValue = radioOption.none;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Page 1"),
+        title: const Text("Page 1"),
       ),
       body: Center(
-          child: Obx(
-        () => Column(
+        child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text("Select One"),
-            Radio(
-                value: radioOption.a,
-                groupValue: selectedValue,
-                onChanged: (Value) {
-                  selectedValue = radioOption.a;
-                },),
-            Radio(
-                value: radioOption.b,
-                groupValue: selectedValue,
-                onChanged: (Value) {
-                  selectedValue = radioOption.b;
-                }),
-            Text("HI, My total Point is : ${vc.result}"),
-            TextButton(
-              onPressed: () {
-                Get.to(Quiz2Page());
+            const Text(
+              "What is 2+2 ?",
+              style: TextStyle(fontSize: 24),
+            ),
+            RadioListTile(
+              value: radioOption.a,
+              groupValue: selectedValue,
+              onChanged: (value) {
+                setState(() {
+                  selectedValue = value!;
+                });
               },
-              child: Text("Next Page !"),
+              title: const Text("5"),
+            ),
+            RadioListTile(
+              value: radioOption.b,
+              groupValue: selectedValue, //b
+              onChanged: (value) {
+                setState(() {
+                  selectedValue = value!;
+                });
+              },
+              title: const Text("4"),
+            ),
+            RadioListTile(
+              value: radioOption.c,
+              groupValue: selectedValue, //b
+              onChanged: (value) {
+                setState(() {
+                  selectedValue = value!;
+                });
+              },
+              title: const Text("3"),
             ),
             TextButton(
               onPressed: () {
-                vc.result++;
+                if (selectedValue == radioOption.b) {
+                  vc.marks += 10;
+                }
+                Get.off(Quiz2Page());
               },
-              child: Text("Increase ++ !"),
-            )
+              child: const Text("Submit!"),
+            ),
           ],
         ),
-      )),
+      ),
     );
   }
 }
