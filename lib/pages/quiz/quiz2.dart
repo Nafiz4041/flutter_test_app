@@ -70,14 +70,11 @@ class _Quiz2PageState extends State<Quiz2Page> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 TextButton(
-                  onPressed: () {
-                    if (selectedValue == radioOption.c) {
-                      vc.marks += 10;
-                    }
-                    Get.off(QuizPage());
-                  },
-                  child: const Text("Prev!"),
-                ),
+                    onPressed: () {
+                      vc.marks.value = 0;
+                      Get.off(QuizPage());
+                    },
+                    child: Text("Prev!")),
                 TextButton(
                   onPressed: () {
                     if (selectedValue == radioOption.c) {
