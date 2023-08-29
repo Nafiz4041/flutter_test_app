@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_test_app/controllers/valuController.dart';
-import 'package:flutter_test_app/pages/quiz/quiz3.dart';
+//import 'package:flutter_test_app/pages/quiz/quiz3.dart';
 import 'package:flutter_test_app/pages/quiz/quiz_page1.dart';
 import 'package:get/get.dart';
+
+import 'result_page.dart';
 
 class Quiz2Page extends StatefulWidget {
   Quiz2Page({super.key});
@@ -33,7 +35,7 @@ class _Quiz2PageState extends State<Quiz2Page> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const Text(
-              "What is 18/3 ?",
+              "7*8/4",
               style: TextStyle(fontSize: 24),
             ),
             RadioListTile(
@@ -44,7 +46,7 @@ class _Quiz2PageState extends State<Quiz2Page> {
                   selectedValue = value!;
                 });
               },
-              title: const Text("5"),
+              title: const Text("14"),
             ),
             RadioListTile(
               value: radioOption.b,
@@ -54,7 +56,7 @@ class _Quiz2PageState extends State<Quiz2Page> {
                   selectedValue = value!;
                 });
               },
-              title: const Text("7"),
+              title: const Text("12"),
             ),
             RadioListTile(
               value: radioOption.c,
@@ -64,23 +66,23 @@ class _Quiz2PageState extends State<Quiz2Page> {
                   selectedValue = value!;
                 });
               },
-              title: const Text("6"),
+              title: const Text("15"),
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                TextButton(
+                /*TextButton(
                     onPressed: () {
                       vc.marks.value = 0;
                       Get.off(QuizPage());
                     },
-                    child: Text("Prev!")),
-                TextButton(
+                    child: Text("Prev!")),*/
+                ElevatedButton(
                   onPressed: () {
-                    if (selectedValue == radioOption.c) {
-                      vc.marks += 10;
+                    if (selectedValue == radioOption.a) {
+                      vc.marks += 5;
                     }
-                    Get.off(Quiz3Page());
+                    Get.off(ResultPage());
                   },
                   child: const Text("Submit!"),
                 ),

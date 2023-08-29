@@ -17,7 +17,8 @@ class ResultPage extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text("Reslut : ${vc.marks}"),
+                Text("${vc.id.value}"),
+                Text("You get  : ${vc.marks} out of 10"),
                 TextButton(
                     onPressed: () {
                       vc.marks.value = 0;
